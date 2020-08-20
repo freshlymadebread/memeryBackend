@@ -23,7 +23,7 @@ app.use(bodyparser({
 app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
-
+app.use(cors());
 // app.use(cors({
 //   origin: function (ctx) {
 //       // if (ctx.url === '/test') {
@@ -41,16 +41,16 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
- app.use(async (ctx, next)=> {
-  ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
-  ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-  if (ctx.method == 'OPTIONS') {
-    ctx.body = 200; 
-  } else {
-    await next();
-  }
-});
+//  app.use(async (ctx, next)=> {
+//   ctx.set('Access-Control-Allow-Origin', '*');
+//   ctx.set('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+//   ctx.set('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+//   if (ctx.method == 'OPTIONS') {
+//     ctx.body = 200; 
+//   } else {
+//     await next();
+//   }
+// });
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
