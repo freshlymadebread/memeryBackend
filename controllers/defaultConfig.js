@@ -5,7 +5,7 @@ const config = {
         USERNAME: 'root', //mysql用户名
         PASSWORD: 'root', //mysql密码
         PORT: '3306', //mysql端口号
-        HOST: 'localhost' //服务器ip
+        HOST: '123.56.56.250' //服务器ip
     }
 }
 
