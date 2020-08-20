@@ -24,18 +24,18 @@ app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
-app.use(cors({
-  origin: function (ctx) {
-      // if (ctx.url === '/test') {
-          return "*"; // 允许来自所有域名请求
-      // }
-  },
-  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-  maxAge: 5,
-  credentials: true, // 当设置成允许请求携带cookie时，需要保证"Access-Control-Allow-Origin"是服务器有的域名，而不能是"*";
-  allowMethods: ['GET', 'POST', 'DELETE'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}))
+// app.use(cors({
+//   origin: function (ctx) {
+//       // if (ctx.url === '/test') {
+//           return "*"; // 允许来自所有域名请求
+//       // }
+//   },
+//   exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+//   maxAge: 5,
+//   credentials: true, // 当设置成允许请求携带cookie时，需要保证"Access-Control-Allow-Origin"是服务器有的域名，而不能是"*";
+//   allowMethods: ['GET', 'POST', 'DELETE'],
+//   allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+// }))
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'
