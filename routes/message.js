@@ -8,7 +8,7 @@ router.post('/getAll', async (ctx, next) => {
   let data= {}
   let array = await doService.getAllMessage();
   data={
-    messageList:array
+    messageList:array.reverse()
   }
   returnMessage(ctx,data)
 })
