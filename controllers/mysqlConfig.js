@@ -1,5 +1,7 @@
 var mysql = require('mysql');
-var config = require('./defaultConfig');
+//var config = require('./defaultConfig');
+// defaultConfig 文件格式如该目录下的defaultConfig，为了我的数据库安全，没有将配置文件上传到网络
+var config = require('../defaultConfig');
 
 var pool = mysql.createPool({
     host: config.database.HOST,
