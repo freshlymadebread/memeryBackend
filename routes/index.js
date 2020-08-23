@@ -9,7 +9,9 @@ router.get('/', async (ctx, next) => {
   })
 })
 router.get('/entry', async (ctx, next) => {
-  let data = mymethods.parseQuery(ctx.request.url)
+  console.log('entry')
+  console.log( ctx.request.query.name )
+  let data = ctx.request.query
   data.origin = ctx.request.ip
   data.date=  mymethods.changeTime(new Date()) 
   doService.addEntry(data)
