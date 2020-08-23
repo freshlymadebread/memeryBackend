@@ -1,11 +1,20 @@
 const router = require('koa-router')()
+const doService = require('../controllers/mysqlConfig');
+const mymethods = require('../public/javascripts/metheds.js')
+const returnMessage = require('./common/returnMessage')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
   })
 })
-
+router.get('/entry', async (ctx, next) => {
+  let data = mymethods.parseQuery(ctx.request.url)
+  data.origin = ctx.request.ip
+  data.date=  mymethods.changeTime(new Date()) 
+  doService.addEntry(data)
+  returnMessage(ctx,{})
+})
 router.get('/string', async (ctx, next) => {
   ctx.body = 'koa2 string'
 })
