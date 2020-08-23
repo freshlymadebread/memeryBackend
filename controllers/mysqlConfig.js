@@ -49,9 +49,13 @@ let allServices = {
        let _sql = `insert into entry set  name='${obj.name}',date='${obj.date}',origin='${obj.origin}';`
        return allServices.query(_sql, obj)
    },
-    getAllPoetry: function () {
+    getAllPoetry: function (flag) {
         let _sql = ''
-        _sql = `select * from poetry;`
+        let selectStr = ';'
+        if(!flag){
+            selectStr = ' where sign = 1'
+        }
+        _sql = `select * from poetry`+ selectStr
         return allServices.query(_sql)
     },
     getAllMessage(){
