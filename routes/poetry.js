@@ -2,10 +2,12 @@ const router = require('koa-router')()
 const doService = require('../controllers/mysqlConfig');
 const returnMessage = require('./common/returnMessage')
 router.prefix('/poetry')
+var config = require('../defaultConfig');
 
 router.post('/getAll', async (ctx, next) => {
+  let name =  tx.request.body.name
   let data= {}
-  let array = await doService.getAllPoetry();
+  let array = await doService.getAllPoetry(config.rootConf.some(item => item ===name));
   data={
       poetryList:array
   }
