@@ -5,7 +5,7 @@ router.prefix('/poetry')
 var config = require('../defaultConfig');
 
 router.post('/getAll', async (ctx, next) => {
-  let name =  tx.request.body.name
+  let name =  ctx.request.body.name
   let data= {}
   let array = await doService.getAllPoetry(config.rootConf.some(item => item ===name));
   data={
