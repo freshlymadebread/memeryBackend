@@ -46,7 +46,7 @@ let allServices = {
         return allServices.query(_sql, obj)
     },
     addEntry: (obj) => {
-       let _sql = `insert into entry set  name='${obj.name}',date='${obj.date}',origin='${obj.origin}';`
+       let _sql = `insert into entry set  name='${obj.name}',date='${obj.date}',origin='${obj.origin}',flag='${obj.flag}';`
        return allServices.query(_sql, obj)
    },
     getAllPoetry: function (flag) {

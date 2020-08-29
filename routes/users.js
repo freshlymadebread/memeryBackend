@@ -1,5 +1,7 @@
 const router = require('koa-router')()
 const userService = require('../controllers/mysqlConfig');
+const mymethods = require('../public/javascripts/metheds.js')
+const doService = require('../controllers/mysqlConfig');
 const returnMessage = require('./common/returnMessage')
 
 router.prefix('/users')
@@ -27,6 +29,12 @@ router.get('/sercet', async (ctx, next) => {
         ...array[0]
     }
     let password =  data.password
+    
+    let info = ctx.request.query
+    info.origin = ctx.request.ip
+    info.flag = 'secret'
+    info.date=  mymethods.changeTime(new Date()) 
+    doService.addEntry(info)
     if(name.indexOf(password)!==-1){
         returnMessage(ctx,{
             name: name.split(password)[0]

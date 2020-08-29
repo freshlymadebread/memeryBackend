@@ -13,6 +13,7 @@ router.get('/entry', async (ctx, next) => {
   console.log( ctx.request.query.name )
   let data = ctx.request.query
   data.origin = ctx.request.ip
+  data.flag = 'entry'
   data.date=  mymethods.changeTime(new Date()) 
   doService.addEntry(data)
   returnMessage(ctx,{})
